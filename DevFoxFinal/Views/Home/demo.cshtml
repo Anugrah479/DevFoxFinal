@@ -1,0 +1,68 @@
+﻿@model IEnumerable<DevFoxFinal.Models.tbl_course>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>demo</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.courses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fees)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.File)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.courses)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fees)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desc)
+            </td>
+            <td>
+                <img class="rounded-circle" src="@item.File"  width="50" height="50"/>
+                @*@Html.DisplayFor(modelItem => item.File)*@
+                @*<img src="@Url.Content(item.File)" width="50" height="50" />*@
+
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.courseID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.courseID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.courseID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

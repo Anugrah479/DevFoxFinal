@@ -1,0 +1,266 @@
+@model IEnumerable<DevFoxFinal.Models.tbl_studentregisteration>
+
+@{
+    ViewBag.Title = "StudentList";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+<!-- Google Font: Source Sans Pro -->
+<!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">-->
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/FrontEnd/plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="~/FrontEnd/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="~/FrontEnd/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="~/FrontEnd/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+<link rel="stylesheet" href="~/FrontEnd/dist/css/adminlte.min.css">
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+
+
+                @Html.ActionLink("Student Registration", "StudentRegistration", "Home", null, new { @class = "nav-link" })
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>DataTables</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Create new
+                        </button>
+                        @*<li class="breadcrumb-item"><a href="#">Home</a></li>*@
+                        @*<li class="breadcrumb-item active">DataTables</li>*@
+                        @*<input type="submit" value="Create new" class="btn btn-primary" />*@
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                        </div>
+
+
+                        <div class="card-body">
+
+                            <table id="example1" class="table table-bordered table-hover ">
+
+                                <thead>
+                                    <tr>
+                                        <th>Serial no</th>
+                                        <th>Enquiry ID</th>
+                                        <th>Name</th>
+                                        <th>Father's Name</th>
+                                        <th>Mother's name</th>
+                                        <th>Gender</th>
+                                        <th>Date of Birth</th>
+                                        <th>Email</th>
+                                        <th>Courses</th>
+                                        <th>Fees</th>
+                                        <th>Duration</th>
+                                        <th>Registration Date</th>
+                                        <th>File</th>
+                                        <th>Select</th>
+                                        @*<th>
+                                                @Html.DisplayNameFor(model => model.Serialno)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.uniqueID)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Name)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Fathername)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Mothername)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Gender)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Bod)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Email)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.courses)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Fees)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Duration)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Registrationdate)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.File)
+                                            </th>*@
+
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Serialno)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.uniqueID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Fathername)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Mothername)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Gender)
+                                        </td>
+
+                                        <td>
+                                            @{
+                                                var date = item.Bod.Value.ToString("dd/MM/yyyy");
+                                            }
+                                            @Html.DisplayFor(modelItem => date)
+                                            @*@Html.DisplayFor(modelItem => item.Bod.Value.ToString("dd/MM/yyyy"))*@
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.courses)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Fees)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Duration)
+                                        </td>
+                                        <td>
+                                            @{
+                                                var rdate = item.Registrationdate.Value.ToString("dd/MM/yyyy");
+                                            }
+                                            @Html.DisplayFor(modelItem => rdate)
+                                            @*@Html.DisplayFor(modelItem => item.Registrationdate)*@
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.File)
+                                        </td>
+                                        <td><input type="checkbox" id="checkbox1" /></td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</div>
+
+
+
+
+
+
+
+
+
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+
+<script src="~/FrontEnd/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/FrontEnd/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="~/FrontEnd/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/FrontEnd/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/FrontEnd/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/FrontEnd/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="~/FrontEnd/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="~/FrontEnd/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="~/FrontEnd/plugins/jszip/jszip.min.js"></script>
+<script src="~/FrontEnd/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="~/FrontEnd/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="~/FrontEnd/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="~/FrontEnd/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="~/FrontEnd/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false, "ordering": false
+            /* "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]*/
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>

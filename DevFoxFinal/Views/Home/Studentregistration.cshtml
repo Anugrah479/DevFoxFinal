@@ -1,0 +1,300 @@
+﻿@model DevFoxFinal.Models.tbl_studentregisteration
+
+@{
+    ViewBag.Title = "Studentregistration";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>General Form</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">General Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+    @using (Html.BeginForm("SaveStudentRegistration", "Home", FormMethod.Post))
+    {
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Student Registration </h3>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @*<label for="exampleInputEmail1">UniqueID</label>*@
+                                    @Html.LabelFor(model => model.uniqueID, "uniqueID", htmlAttributes: new { @class = "control-label col-md-2,@id = \"exampleInputEmail1\"" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.uniqueID, new { htmlAttributes = new { @class = "form-control", @id = "exampleInputEmail1", @readonly = "readonly" } })
+                                        @Html.ValidationMessageFor(model => model.uniqueID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Student Name</label>
+                                    @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Name here", @id = "exampleInputEmail1" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Father's Name</label>
+                                    @*@Html.LabelFor(model => model.Fathername, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Fathername, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Name here", @id = "exampleInputEmail1" } })
+                                        @Html.ValidationMessageFor(model => model.Fathername, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Mother's Name</label>
+                                    @*@Html.LabelFor(model => model.Mothername, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Mothername, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Name here", @id = "exampleInputEmail1" } })
+                                        @Html.ValidationMessageFor(model => model.Mothername, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Gender</label>
+                                    @*@Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2 " })*@
+
+
+                                    <div class="col-md-10">
+
+
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Gender, "Male", new { @name = "gender" })
+                                            Male
+                                        </label>
+
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Gender, "Female", new { @name = "gender" })
+                                            Female
+                                        </label>
+
+                                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Birth Date</label>
+                                    @*@Html.LabelFor(model => model.Bod, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Bod, new { htmlAttributes = new { @class = "form-control datetimepicker1" } })
+                                        @Html.ValidationMessageFor(model => model.Bod, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email</label>
+                                    @*@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Course name</label>
+                                    <div class="col-md-10">
+                                        @*@Html.DropDownListFor(m => m.courseID,Model.Duration, "Please select", new { onchange = "document.forms[0].submit();" })*@
+                                        @*@Html.DropDownListFor(model => model.courses, ViewBag.Item as SelectList, "---Select Courses---", new { @class = "form-control", @id = "exampleInputEmail1" })*@
+                                        @Html.DropDownListFor(model => model.courses, ViewBag.CoursesList as SelectList, "Select Course", new { @class = "form-control", id = "courseDropdown" })
+                                        @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Duration" class="control-label col-md-2">Duration</label>
+                                    <div class="col-md-10">
+                                        <select id="durationDropdown" name="Duration" class="form-control">
+                                            <option value="">Select Duration</option>
+                                        </select>
+                                        @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Fees" class="control-label col-md-2">Fees</label>
+                                    <div class="col-md-10">
+                                        <input type="text" id="feeInput" name="Fees" class="form-control" placeholder="Fee" readonly>
+                                        @Html.ValidationMessageFor(model => model.Fees, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                @*<div class="form-group">
+                                        @Html.LabelFor(model => model.File, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.File, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Registration Date</label>
+                                    @*@Html.LabelFor(model => model.Registrationdate, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Registrationdate, new { htmlAttributes = new { @class = "form-control datetimepicker1" } })
+                                        @Html.ValidationMessageFor(model => model.Registrationdate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Submit" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    }
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+    $("#courseDropdown").change(function () {
+        var selectedCourse = $(this).val();
+
+        $.ajax({
+            url: '@Url.Action("GetDurationsAndFeesForCourse", "Home")',
+            type: 'GET',
+            data: { course: selectedCourse },
+            dataType: 'json',
+            success: function (data) {
+                var durationDropdown = $("#durationDropdown");
+                var feeInput = $("#feeInput");
+
+                durationDropdown.empty();
+                feeInput.val("");
+
+                durationDropdown.append($('<option></option>').text("Select Duration").val(""));
+                $.each(data, function (index, item) {
+                    durationDropdown.append($('<option></option>').text(item.Duration).val(item.Duration));
+                });
+
+                durationDropdown.change(function () {
+                    var selectedDuration = $(this).val();
+                    var selectedData = data.find(d => d.Duration === selectedDuration);
+
+                    if (selectedData) {
+                        feeInput.val(selectedData.Fee);
+                    } else {
+                        feeInput.val("");
+                    }
+                });
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+
+    @*$('#yourFormId').submit(function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Serialize the form data
+        var formData = $(this).serialize();
+
+        $.ajax({
+            url: '@Url.Action("SaveStudentRegistration", "Home")',
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                if (response.success) {
+                    // If successful, redirect to the success page
+                    window.location.href = response.redirectUrl;
+                } else if (response.errors) {
+                    // If there are validation errors, display them in the UI
+                    var errorMessages = '<ul>';
+                    $.each(response.errors, function (index, value) {
+                        errorMessages += '<li>' + value + '</li>';
+                    });
+                    errorMessages += '</ul>';
+                    $('#errorContainer').html(errorMessages); // Display errors in a container element
+                } else {
+                    // If there's an error, display the error message
+                    $('#errorContainer').text(response.errorMessage);
+                }
+            },
+            error: function () {
+                // Handle AJAX errors
+                $('#errorContainer').text('An error occurred during the request.');
+            }
+        });
+    });*@
+});
+
+    @*$(document).ready(function () {
+    $("#courseDropdown").change(function () {
+        var selectedCourse = $(this).val();
+
+
+        $.ajax({
+            url: '@Url.Action("GetDurationsAndFeesForCourse", "Home")',
+            type: 'GET',
+            data: { course: selectedCourse },
+            dataType: 'json',
+            success: function (data) {
+                var durationDropdown = $("#durationDropdown");
+                var feeInput = $("#feeInput");
+
+                durationDropdown.empty();
+                feeInput.val("");
+
+                durationDropdown.append($('<option></option>').text("Select Duration").val(""));
+                $.each(data, function (index, item) {
+                    durationDropdown.append($('<option></option>').text(item.Duration).val(item.Duration));
+                });
+
+                durationDropdown.change(function () {
+                    var selectedDuration = $(this).val();
+                    var selectedData = data.find(d => d.Duration === selectedDuration);
+
+                    if (selectedData) {
+                        feeInput.val(selectedData.Fee);
+                    } else {
+                        feeInput.val("");
+                    }
+                });
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+    });
+
+});*@
+</script>
+
